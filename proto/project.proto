@@ -1,0 +1,29 @@
+syntax = "proto3";
+package project;
+
+message Message {
+    message ComplexString {
+        string field = 1;
+    }
+
+    message ComplexInt {
+        int32 field = 1;
+    }
+
+    message ComplexDouble {
+        double field = 1;
+    }
+
+    ComplexString field = 1;
+    ComplexInt field2 = 2;
+    ComplexDouble field3 = 3;
+}
+
+message Test {
+    // The objective is to create a subview of a message, already used in another languages without problem
+    message Message {
+        project.Message.ComplexString field = 1;
+    }
+
+    Message message = 1;
+}
